@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ## Association
 - has_many :items
-- belongs_to :buys
+- belongs_to :buy
 
 ## itemsテーブル
 
@@ -69,8 +69,10 @@ Things you may want to cover:
 | user               | references | null: false, foreign_key: true |
 
 ## Association
+- has_one :address
 - belongs_to :item
 - belongs_to :user
+
 
 ## addressテーブル
 | Column             | Type       | Options                        |
