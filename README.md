@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ## Association
 - has_many :items
-- belongs_to :address
+- belongs_to :buys
 
 ## itemsテーブル
 
@@ -48,13 +48,15 @@ Things you may want to cover:
 | ------------------ | ---------- | ------------------------------ |
 | item_name          | string     | null: false,                   |
 | description        | text       | null: false                    |
-| category           | text       | null: false                    |
-| condition          | text       | null: false                    |
-| shipping_cost      | string     | null: false,                   |
-| shipping_from      | string     | null: false,                   |
-| shipping_time      | string     | null: false,                   |
-| price              | string     | null: false,                   |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_cost_id   | integer    | null: false,                   |
+| shipping_from_id   | integer    | null: false,                   |
+| shipping_time_id  | integer    | null: false,                   |
+| price              | integer    | null: false,                   |
 | user               | references | null: false, foreign_key: true |
+| prefecture_id      | integer    | null: false                    |
+
 
 ## Association
 - belongs_to :user
@@ -67,21 +69,19 @@ Things you may want to cover:
 | user               | references | null: false, foreign_key: true |
 
 ## Association
-- has_one :address
-- belongs_to :buy
+- belongs_to :item
+- belongs_to :user
 
 ## addressテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_cord          | string     | null: false,                   |
-| prefectures        | text       | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city               | text       | null: false                    |
 | address            | text       | null: false                    |
-| building_name      | string     | null: false,                   |
+| building_name      | string     |                                |
 | phone_number       | string     | null: false,                   |
-| item              | references | null: false, foreign_key: true |
-| user               | references | null: false, foreign_key: true |
+| integer            | references | null: false, foreign_key: true |
 
 ## Association
 - belongs_to :buy
-- belongs_to :user
