@@ -73,7 +73,7 @@ Things you may want to cover:
 - belongs_to :user
 
 
-## addressテーブル
+## addressesテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_cord          | string     | null: false,                   |
