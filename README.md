@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ## Association
 - has_many :items
-- belongs_to :buy
+- has_many :buys
 
 ## itemsテーブル
 
@@ -51,16 +51,15 @@ Things you may want to cover:
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shipping_cost_id   | integer    | null: false,                   |
-| shipping_from_id   | integer    | null: false,                   |
-| shipping_time_id  | integer    | null: false,                   |
+| shipping_time_id   | integer    | null: false,                   |
 | price              | integer    | null: false,                   |
 | user               | references | null: false, foreign_key: true |
 | prefecture_id      | integer    | null: false                    |
 
 
 ## Association
+- has_one :buy
 - belongs_to :user
-- belongs_to :buy
 
 ## buysテーブル
 | Column             | Type       | Options                        |
@@ -79,8 +78,8 @@ Things you may want to cover:
 | ------------------ | ---------- | ------------------------------ |
 | post_cord          | string     | null: false,                   |
 | prefecture_id      | integer    | null: false                    |
-| city               | text       | null: false                    |
-| address            | text       | null: false                    |
+| city               | string     | null: false                    |
+| address            | string     | null: false                    |
 | building_name      | string     |                                |
 | phone_number       | string     | null: false,                   |
 | buy                | references | null: false, foreign_key: true |
