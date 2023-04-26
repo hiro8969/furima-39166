@@ -40,7 +40,7 @@ Things you may want to cover:
 
 ## Association
 - has_many :items
-- has_many :buyers
+- belongs_to :address
 
 ## itemsテーブル
 
@@ -58,10 +58,19 @@ Things you may want to cover:
 
 ## Association
 - belongs_to :user
-- belongs_to :buyers
+- belongs_to :buy
 
-## buyersテーブル
+## buysテーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item               | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
+## Association
+- has_one :address
+- belongs_to :buy
+
+## addressテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_cord          | string     | null: false,                   |
@@ -70,9 +79,9 @@ Things you may want to cover:
 | address            | text       | null: false                    |
 | building_name      | string     | null: false,                   |
 | phone_number       | string     | null: false,                   |
-| items              | references | null: false, foreign_key: true |
+| item              | references | null: false, foreign_key: true |
 | user               | references | null: false, foreign_key: true |
 
 ## Association
-- has_many :items
+- belongs_to :buy
 - belongs_to :user
