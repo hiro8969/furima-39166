@@ -6,5 +6,6 @@ class User < ApplicationRecord
 
   #あとでアソシエーション設置
 
-  validates :nickname, :first_name, :family_name_kana, :first_name_kana, :birth_day, presence: true
+  # validates :nickname, :first_name, :family_name_kana, :first_name_kana, :birth_day, presence: true
+  validates :nickname, presence: true
 end
