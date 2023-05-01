@@ -16,13 +16,3 @@ FactoryBot.define do
     end
   end
 end
-
-
-# item_name   { 'パソコン' }
-#     description   { '未使用のパソコンです' }
-#     category_id { Category.all.sample }
-#     condition_id { Condition.all.sample }
-#     shipping_cost_id   { ShippingCost.all.sample }
-#     shipping_time_id  { ShippingTime.all.sample }
-#     price  { 5000 }
-#     prefecture_id  { Prefecture.all.sample }
