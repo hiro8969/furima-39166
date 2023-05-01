@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #あとでアソシエーション設置
-
+  has_many :items
+  # has_many :buys
+  
   validates :nickname, :family_name_kana, :first_name_kana, :birth_day, presence: true
   validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カタカナのみで入力して下さい' }
   validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カタカナのみで入力して下さい' }
