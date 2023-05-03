@@ -1,7 +1,5 @@
 <%= render "shared/second-header"%>
 
-<%= form_with model: @buy_address, url: buys_path, local: true do |f| %>
-  <%= render 'shared/error_messages', model: @buy_address %>
 <div class='transaction-contents'>
   <div class='transaction-main'>
     <h1 class='transaction-title-text'>
@@ -9,14 +7,14 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag '', class: 'buy-item-img' %>
+      <%= image_tag @item.image, class: 'buy-item-img' %>
       <div class='buy-item-right-content'>
         <h2 class='buy-item-text'>
-          <%= "商品名" %>
+          <%= @item.item_name %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= '999,999,999' %></p>
-          <p class='item-price-sub-text'><%= '配送料負担' %></p>
+          <p class='item-price-text'>¥<%= @item.price %></p>
+          <p class='item-price-sub-text'><%= ShippingCost.find(@item.shipping_cost_id).name %></p>
         </div>
       </div>
     </div>
@@ -28,12 +26,15 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-        ¥<%= "販売価格" %>
+        ¥<%= @item.price %>
       </p>
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with model: @buy_address, url: item_buys_path, method: :post, local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -84,7 +85,7 @@
           <label class="form-text">郵便番号</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field :post_cord, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+        <%= f.text_field :post_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
@@ -129,5 +130,4 @@
     <% end %>
   </div>
 </div>
-<% end %>
 <%= render "shared/second-footer"%>
