@@ -1,5 +1,5 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_sk_test_d2d8c740a4775263dab084bd')
+  const payjp = Payjp('pk_test_217e5a0c570c0a368d2dbd95')
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');

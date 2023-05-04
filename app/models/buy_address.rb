@@ -1,6 +1,6 @@
 class BuyAddress
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :city, :address, :building_name, :phone_number, :buy_id, :item_id, :user_id
+  attr_accessor :post_code, :prefecture_id, :city, :address, :building_name, :phone_number, :buy_id, :item_id, :user_id, :token
 
   with_options presence: true do
     validates :user_id, :item_id
@@ -8,7 +8,7 @@ class BuyAddress
   end
 
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
-  validates :city, :address, :phone_number, presence: true
+  validates :city, :address, :phone_number, :token, presence: true
   validates :phone_number, length: { minimum: 10, maximum: 11 }
   validates :phone_number, format: { with: /\A[0-9]+\z/, message: "Phone number is invalid" }
 
