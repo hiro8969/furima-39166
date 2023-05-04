@@ -1,5 +1,6 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :move_to_index, only: :index
 
   def index
     @buy_address = BuyAddress.new
@@ -8,6 +9,7 @@ class BuysController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
+    @buy = Buy.find(params[:buy_id])
     @buy_address = BuyAddress.new(buy_params)
     if @buy_address.valid?
       Payjp.api_key = "sk_test_d2d8c740a4775263dab084bd"
@@ -28,4 +30,10 @@ class BuysController < ApplicationController
     params.require(:buy_address).permit(:post_code, :prefecture_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
   
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end  
+  end
 end
