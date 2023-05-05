@@ -65,7 +65,7 @@ RSpec.describe BuyAddress, type: :model do
       it '電話番号が半角数値でないと購入できないこと' do
         @buy_address.phone_number = '０9012341234'
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Phone number Phone number is invalid")
+        expect(@buy_address.errors.full_messages).to include("Phone number is invalid")
       end
       it 'user_idが紐づいていなければ購入できないこと' do
         @buy_address.user_id = ''
@@ -76,6 +76,18 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.item_id = ''
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Item can't be blank")
+      end
+      context '内容に問題ない場合' do
+        it "tokenがあれば保存ができること" do
+          expect(@buy_address).to be_valid
+        end
+      end    
+      context '内容に問題がある場合' do
+          it "tokenが空では登録できないこと" do
+          @buy_address.token = nil
+          @buy_address.valid?
+          expect(@buy_address.errors.full_messages).to include("Token can't be blank")
+        end
       end
     end
   end
