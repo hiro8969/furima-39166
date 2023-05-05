@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index, only: :index
-  before_action :prevent_url, only: [:index, :create]
+  before_action :prevent_url
 
   def index
     @buy_address = BuyAddress.new
@@ -16,7 +16,7 @@ class BuysController < ApplicationController
       Payjp::Charge.create(
         amount: @item.price,
         card: buy_params[:token],
-        currency: 'jpy'                
+        currency: 'jpy'
       )
        @buy_address.save
        return redirect_to root_path
@@ -38,7 +38,8 @@ class BuysController < ApplicationController
   end 
 
   def prevent_url
-    if @item.user_id == current_user.id || @item.buy.present?
+    @item = Item.find(params[:item_id])
+    if @item && (@item.user_id == current_user.id || @item.buy.present?)
       redirect_to root_path
     end
   end
