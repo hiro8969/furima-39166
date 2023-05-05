@@ -31,14 +31,12 @@ class BuysController < ApplicationController
   end
   
   def move_to_index
-    # @item = Item.find(params[:item_id])
     if @item.user_id == current_user.id
     redirect_to root_path
     end  
   end 
 
   def prevent_url
-    # @item = Item.find(params[:item_id])
     if @item && (@item.user_id == current_user.id || @item.buy.present?)
       redirect_to root_path
     end
