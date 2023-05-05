@@ -27,23 +27,23 @@
       <% if user_signed_in? %>
         <% if current_user.id == @item.user_id %>
           <% if @item.buy.present? %>
-      <% else %>
+        <% else %>
         <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
           <p class="or-text">or</p>
           <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
-      <% end %>
+        <% end %>
       <% else %>
         <% if @item.buy.present? %>
       <% else %>
         <%= link_to "購入画面に進む", item_buys_path(item_id: @item.id), class:"item-red-btn"%>
-      <% end %>
+        <% end %>
       <% end %>
       <% else %>
         <% if user_signed_in? %>
         <% if @item.buy.present? || current_user %>
       <% else %>
         <%= link_to "購入画面に進む", item_buys_path(item_id: @item.id), class:"item-red-btn"%>
-      <% end %>
+        <% end %>
       <% end %>
       <% end %>
 
