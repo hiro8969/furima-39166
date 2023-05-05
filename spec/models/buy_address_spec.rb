@@ -92,5 +92,3 @@ RSpec.describe BuyAddress, type: :model do
     end
   end
 end
-
-         # bundle exec rspec spec/models/buy_address_spec.rb
