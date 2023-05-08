@@ -76,7 +76,7 @@ Things you may want to cover:
 ## addressesテーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| post_cord          | string     | null: false,                   |
+| post_code          | string     | null: false,                   |
 | prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | address            | string     | null: false                    |

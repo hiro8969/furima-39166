@@ -25,17 +25,17 @@ RSpec.describe BuyAddress, type: :model do
       it '郵便番号は『３桁ハイフン４桁』半角英数字でないと保存できないこと' do
         @buy_address.post_code = '123-123４'
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@buy_address.errors.full_messages).to include("Post code is invalid")
       end
       it '都道府県に「---」が選択されている場合は購入できないこと' do
         @buy_address.prefecture_id = '0'
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@buy_address.errors.full_messages).to include("Prefecture を選択してください")
       end
       it '都道府県が空の場合は購入できないこと' do
         @buy_address.prefecture_id = nil
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@buy_address.errors.full_messages).to include("Prefecture を選択してください")
       end
       it '市区町村が空だと購入できないこと' do
         @buy_address.city = ''
@@ -81,7 +81,7 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.token = nil
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Token can't be blank")
-        end
+      #   end
       end
     end
   end

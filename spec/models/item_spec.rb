@@ -35,22 +35,22 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが空の場合は出品できない' do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を選択してください")
       end
       it 'カテゴリーが「---」の場合は出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を選択してください")
       end
       it '商品の状態が空の場合は出品できない' do
         @item.condition_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition を選択してください")
       end
       it '商品の状態が「---」の場合は出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition を選択してください")
       end
       it '配送料の負担が空の場合は出品できない' do
         @item.shipping_cost_id = nil
@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
       it '配送料の負担が「---」の場合は出品できない' do
         @item.shipping_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping cost を選択してください")
       end
       it '発送元の地域が空の場合は出品できない' do
         @item.prefecture_id = nil
@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
       it '発送元の地域が「---」の場合は出品できない' do
         @item.prefecture_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture を選択してください")
       end    
       it '発送までの日数が空の場合は出品できない' do
         @item.shipping_time_id = nil
@@ -80,7 +80,7 @@ RSpec.describe Item, type: :model do
       it '発送までの日数が「---」の場合は出品できない' do
         @item.shipping_time_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping time can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping time を選択してください")
       end
       it '価格が空では保存できない' do
         @item.price = ''

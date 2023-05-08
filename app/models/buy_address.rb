@@ -4,10 +4,10 @@ class BuyAddress
 
   with_options presence: true do
     validates :user_id, :item_id, :city, :address, :phone_number, :token
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
   end
 
-  validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :prefecture_id, numericality: {other_than: 0, message: "を選択してください"}
   validates :phone_number, length: { minimum: 10, maximum: 11 }
   validates :phone_number, format: { with: /\A[0-9]+\z/ }
 
