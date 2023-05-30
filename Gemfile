@@ -60,9 +60,9 @@ group :development do
   gem 'rubocop', require: false
 end
 
-# group :production do
-#   gem 'pg', '1.4.6'
-# end
+group :production do
+  gem 'pg'
+end
 
 gem 'devise'
 
