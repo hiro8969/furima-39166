@@ -18,10 +18,10 @@ test:
   host: localhost
   database: furima_39166_test
 
-production:
-  <<: *default
-  adapter: postgresql
-  url: <%= ENV['DATABASE_URL'] %>
+# production:
+#   <<: *default
+#   adapter: postgresql
+#   url: <%= ENV['DATABASE_URL'] %>
 
   production:
   <<: *default
